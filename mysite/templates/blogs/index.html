@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load django_markdown %}
+
+{% block main_container %}
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+    {% for article in object_list %}
+        <div class="post-preview">
+            <a href="{% url 'blog' article.slug %}">
+                <h3 class="post-title">
+                    {{ article.title }}
+                </h3>
+            </a>
+            <p class="post-meta">
+                Posted by <a href="#">Source Code Zoo</a> on {{ article.create_date|date }}
+            </p>
+        </div>
+        <hr>
+    {% endfor %}
+        <!-- Pager -->
+        <ul class="pager">
+            <li class="next">
+                <a href="#">Older Posts &rarr;</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+{% endblock %}

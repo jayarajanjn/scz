@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load django_markdown %}
+
+{% block title %}
+    Source Code Zoo - {{ object.title }}
+{% endblock %}
+{% block css %}
+    {% markdown_media_css %}
+    <link href="{% static 'css/hl.css' %}" rel="stylesheet">
+
+{% endblock %}
+
+{% block backgroud_image %}
+    {% static 'img/home-bg.png' %}
+{% endblock %}
+
+{% block main_container %}
+    <article>
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <a href="{% url 'blog' article.slug %}">
+                    <h2 class="post-title">
+                        {{ object.title }}
+                    </h2>
+                </a>
+                <p class="post-meta">
+                    By <a href="#">Source Code Zoo.</a> Deployed on {{ object.create_date|date }}
+                </p>
+                {{ object.content | markdown }}
+            </div>
+        </div>
+    </article>
+{% endblock %}
+{% block js %}
+    {% markdown_media_css %}
+{% endblock %}
