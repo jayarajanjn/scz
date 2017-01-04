@@ -50,7 +50,7 @@
                 <div class="row control-group">
                     <div class="form-group col-xs-12 floating-label-form-group controls">
                         {{ form.message.label_tag }}
-                        {{ form.message |add_class:"form_control" | attr:"placeholder:Message"  }}
+                        {{ form.message |add_class:"form_control" | attr:"placeholder:Message" |attr:"cols:60" | attr:"rows:6"}}
                         <p class="help-block text-danger"></p>
                     </div>
                 </div>
